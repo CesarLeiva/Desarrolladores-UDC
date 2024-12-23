@@ -1,0 +1,6 @@
+@Desarrolladores_UDC_HostAddress = http://localhost:5072
+
+GET {{Desarrolladores_UDC_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
