@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DB
@@ -10,6 +11,8 @@ namespace DB
     {
         public int Id { get; set; }
         public int ProfileId { get; set; }
+
+        [JsonIgnore]
         public Profile Profile { get; set; } = null!;
         public string Content { get; set; }
         public ICollection<Tag> Tags { get; set; } = [];

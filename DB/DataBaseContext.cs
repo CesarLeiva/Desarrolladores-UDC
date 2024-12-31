@@ -29,7 +29,7 @@ namespace DB
                     .ValueGeneratedOnAdd();
                 entity.Property(u => u.Name)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasMaxLength(100);
                 entity.HasIndex(u => u.Email)
                     .IsUnique();
                 entity.Property(u => u.Email)
@@ -43,14 +43,16 @@ namespace DB
                 entity.Property(u => u.Verified)
                     .HasDefaultValue(false);
                 entity.Property(u => u.CreatedAt)
-                    .HasDefaultValue("CURRENT_TIMESTAMP")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP")
                     .ValueGeneratedOnAdd();
             });
             modelBuilder.Entity<Profile>(entity =>
             {
                 entity.Property(u => u.Title)
+                    .HasDefaultValue("")
                     .HasMaxLength(500);
                 entity.Property(u => u.Description)
+                    .HasDefaultValue("")
                     .HasMaxLength(2000);
             });
             modelBuilder.Entity<Project>(entity =>
@@ -99,12 +101,12 @@ namespace DB
                 entity.Property(p => p.Id)
                     .ValueGeneratedOnAdd();
                 entity.Property(p => p.Content)
-                 .IsRequired()
-                 .HasMaxLength(5000);
+                    .IsRequired()
+                    .HasMaxLength(5000);
                 entity.Property(p => p.Likes)
                     .HasDefaultValue(0);
                 entity.Property(p => p.CreatedAt)
-                    .HasDefaultValue("CURRENT_TIMESTAMP")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP")
                     .ValueGeneratedOnAdd();
             });
             modelBuilder.Entity<Comment>(entity =>
@@ -118,7 +120,7 @@ namespace DB
                 entity.Property (c => c.Likes)
                     .HasDefaultValue(0);
                 entity.Property(c => c.CreatedAt)
-                    .HasDefaultValue("CURRENT_TIMESTAMP")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP")
                     .ValueGeneratedOnAdd();
                 entity.Property(p => p.WasEdited)
                     .HasDefaultValue(false);

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace DB
 {
@@ -16,9 +17,11 @@ namespace DB
         [EmailAddress]
         public string Email { get; set; }
         public string Password { get; set; }
-        public Profile Profile { get; set; }
 
-        [EnumDataType(typeof(UserRole))]
+        [JsonIgnore]
+        public Profile Profile { get; set; } = null!;
+
+        [JsonConverter(typeof(JsonStringEnumConverter))]//Permite que se pueda usar como string y como int
         public UserRole Role { get; set; }
         public bool Verified { get; set; } = false;
         public DateTime CreatedAt { get; set; }

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace DB
 {
@@ -13,6 +14,7 @@ namespace DB
         [Key, ForeignKey("User")]
         public int ProfileId { get; set; }
 
+        [JsonIgnore]
         public Profile Profile { get; set; } = null!;
 
         [Url]

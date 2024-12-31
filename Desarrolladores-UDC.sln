@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{83A738E8-43EA-43AA-98E4-785C20E1A094}"
 	ProjectSection(SolutionItems) = preProject
 		.excalidraw = .excalidraw
+		.txt = .txt
 	EndProjectSection
 EndProject
 Global
